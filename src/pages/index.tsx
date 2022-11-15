@@ -1,10 +1,12 @@
-import CommonMeta from "components/common/CommonMeta";
+import Meta from "components/common/Meta";
+import Header from "components/common/Header";
 
 export default function Home() {
   return (
-    <div>
-      <CommonMeta description={"トップページです"} />
-      <main></main>
-    </div>
+    <>
+      <Meta description={"トップページです"} />
+      <Header />
+      <main>トップページです</main>
+    </>
   );
 }

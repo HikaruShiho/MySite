@@ -6,7 +6,7 @@ type Props = {
   description: string;
 };
 
-const CommonMeta = ({ title, description }: Props) => {
+const Meta = ({ title, description }: Props) => {
   const router = useRouter();
 
   return (
@@ -36,10 +36,7 @@ const CommonMeta = ({ title, description }: Props) => {
         content={process.env.SITE_URL + router.pathname}
       />
       <meta property="og:image" content="" />
-      <meta
-        property="og:site_name"
-        content={router.pathname === "/" ? "website" : "article"}
-      />
+      <meta property="og:site_name" content="Shiho's Site" />
       <meta property="og:locale" content="ja_JP" />
       <link
         rel="shortcut icon"
@@ -71,4 +68,4 @@ const CommonMeta = ({ title, description }: Props) => {
   );
 };
 
-export default CommonMeta;
+export default Meta;

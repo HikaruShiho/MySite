@@ -1,7 +1,14 @@
-import CommonMeta from "components/common/CommonMeta";
+import Header from "components/common/Header";
+import Meta from "components/common/Meta";
 
 const profile = () => {
-  return <CommonMeta title={"プロフィール"} description={""} />;
+  return (
+    <>
+      <Meta title={"プロフィール"} description={""} />
+      <Header />
+      <main>プロフィール</main>
+    </>
+  );
 };
 
 export default profile;
