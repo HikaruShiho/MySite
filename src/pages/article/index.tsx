@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import Footer from "components/common/Footer";
 import Header from "components/common/Header";
 import Meta from "components/common/Meta";
-import { fetchArticle } from "utils/article/fetchArticle";
+import { fetchArticles } from "utils/article/fetchArticle";
 import { QiitaArticle } from "types/article";
 import Card from "components/article/Card";
 
@@ -11,15 +11,13 @@ type Props = {
 };
 
 const index = ({ articles }: Props) => {
-  console.log(articles);
-
   return (
     <>
-      <Meta title={"記事一覧"} description={""} />
+      <Meta title={"Qiita記事一覧"} description={"Qiitaにて投稿した記事を掲載しています。"} />
       <Header />
-      <main className="bg-gray-100">
+      <main className="bg-baseColor03">
         <div className="w-full max-w-7xl mx-auto px-10 pt-12">
-          <h2 className="text-5xl text-qiita font-bold">Qiita</h2>
+          <h2 className="text-6xl text-qiita font-bold">Qiita</h2>
           <p className="pt-4">Qiitaにて投稿した記事の一覧</p>
         </div>
         <div className="p-10">
@@ -40,7 +38,7 @@ const index = ({ articles }: Props) => {
 export default index;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const articles: QiitaArticle[] = await fetchArticle();
+  const articles: QiitaArticle[] = await fetchArticles();
   return {
     props: {
       articles,
