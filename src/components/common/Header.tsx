@@ -17,7 +17,7 @@ const Header = () => {
             <Link href="/profile">プロフィール</Link>
           </li>
           <li>
-            <Link href="/article">記事</Link>
+            <Link href="/article">Qiita</Link>
           </li>
         </ul>
       </div>
