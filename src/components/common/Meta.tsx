@@ -33,37 +33,44 @@ const Meta = ({ title, description }: Props) => {
       />
       <meta
         property="og:url"
-        content={process.env.SITE_URL + router.pathname}
+        content={process.env.NEXT_PUBLIC_BASE_URL + router.pathname}
       />
       <meta property="og:image" content="" />
       <meta property="og:site_name" content="Shiho's Site" />
       <meta property="og:locale" content="ja_JP" />
       <link
         rel="shortcut icon"
-        href={`${process.env.SITE_URL}/favicon.ico`}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/favicon.ico`}
         type="image/x-icon"
       />
       <link
         rel="apple-touch-icon"
-        href={`${process.env.SITE_URL}/apple-touch-icon.png`}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/apple-touch-icon.png`}
       />
       <link
         rel="apple-touch-icon-precomposed"
         sizes="120x120"
-        href={`${process.env.SITE_URL}/apple-touch-icon.png`}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/apple-touch-icon.png`}
       />
       <link
         rel="apple-touch-icon-precomposed"
         sizes="144x144"
-        href={`${process.env.SITE_URL}/apple-touch-icon.png`}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/apple-touch-icon.png`}
       />
       <link
         rel="apple-touch-icon-precomposed"
         sizes="152x152"
-        href={`${process.env.SITE_URL}/apple-touch-icon.png`}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/apple-touch-icon.png`}
       />
-      <link rel="start" href={process.env.SITE_URL} title="Shiho's Site" />
-      <link rel="canonical" href={process.env.SITE_URL + router.pathname} />
+      <link
+        rel="start"
+        href={process.env.NEXT_PUBLIC_BASE_URL}
+        title="Shiho's Site"
+      />
+      <link
+        rel="canonical"
+        href={process.env.NEXT_PUBLIC_BASE_URL + router.pathname}
+      />
     </Head>
   );
 };
