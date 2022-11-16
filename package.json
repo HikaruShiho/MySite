@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^2.0.0",
+    "@sanity/image-url": "^1.0.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "axios": "^1.1.3",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
     "next": "13.0.3",
+    "next-sanity": "^1.1.0",
     "ogp-fetcher": "^1.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

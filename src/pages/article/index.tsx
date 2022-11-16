@@ -1,38 +1,36 @@
 import { GetServerSideProps } from "next";
-import Link from "next/link";
 import Footer from "components/common/Footer";
 import Header from "components/common/Header";
 import Meta from "components/common/Meta";
-import { fetchOgImageUrl } from "utils/article/fetchOgImageUrl";
+import { fetchArticle } from "utils/article/fetchArticle";
+import { QiitaArticle } from "types/article";
+import Card from "components/article/Card";
 
 type Props = {
-  ogImageUrl: string;
+  articles: QiitaArticle[];
 };
 
-const index = ({ ogImageUrl }: Props) => {
+const index = ({ articles }: Props) => {
+  console.log(articles);
+
   return (
     <>
       <Meta title={"記事一覧"} description={""} />
       <Header />
-      <main>
-        <div>
-          <h2>記事一覧</h2>
+      <main className="bg-gray-100">
+        <div className="w-full max-w-7xl mx-auto px-10 pt-12">
+          <h2 className="text-5xl text-qiita font-bold">Qiita</h2>
+          <p className="pt-4">Qiitaにて投稿した記事の一覧</p>
         </div>
-        <div>
-          <ul>
-            <li>
-              <Link href={ogImageUrl} target="_blank">
-                <dl>
-                  <dt>
-                    <img src={ogImageUrl} alt="" />
-                  </dt>
-                  <dd></dd>
-                </dl>
-              </Link>
-            </li>
+        <div className="p-10">
+          <ul className="w-full max-w-7xl mx-auto flex flex-wrap py-5 px-5 bg-white rounded-xl">
+            {articles.map((article) => (
+              <li key={article.id} className="w-2/6 px-5 py-3">
+                <Card article={article}/>
+              </li>
+            ))}
           </ul>
         </div>
-        <button></button>
       </main>
       <Footer />
     </>
@@ -42,12 +40,10 @@ const index = ({ ogImageUrl }: Props) => {
 export default index;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const ogImageUrl = await fetchOgImageUrl(
-    "https://qiita.com/shiho97797/items/7d9c5f784aa1d36a2b37"
-  );
+  const articles: QiitaArticle[] = await fetchArticle();
   return {
     props: {
-      ogImageUrl,
+      articles,
     },
   };
 };
