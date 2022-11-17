@@ -5,26 +5,27 @@ export default {
   fields: [
     {
       name: "title",
-      title: "Title",
-      description: "プロジェクト名",
+      title: "プロジェクト名",
+      type: "string",
+    },
+    {
+      name: "sub_title",
+      title: "サブタイトル",
       type: "string",
     },
     {
       name: "description",
-      title: "Description",
-      description: "プロジェクト概要",
+      title: "概要",
       type: "string",
     },
     {
       name: "thumbnail",
-      title: "Thumbnail",
-      description: "サムネイル画像",
+      title: "サムネイル",
       type: "image",
     },
     {
       name: "technology_stack",
-      title: "Technology Stack",
-      description: "使用技術",
+      title: "使用技術",
       type: "array",
       of: [
         {

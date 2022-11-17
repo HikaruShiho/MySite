@@ -8,6 +8,7 @@ export interface Work extends WorkBody {
 
 export type WorkBody = {
   title: string;
+  sub_title: string;
   description: string;
   thumbnail?: string;
   image: {
