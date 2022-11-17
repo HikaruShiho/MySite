@@ -4,19 +4,21 @@ import { sanityClient } from "lib/sanity/config";
 import { Work } from "types/work";
 
 type Data = {
-  works: Work[];
+  work: Work;
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const worksQuery = groq`
-    * [_type == "work"] {
+  const { id } = req.query;
+  const workQuery = groq`
+    * [_type == "work" && _id == "${id}"] {
       ...,
       "thumbnail_url": thumbnail.asset->url
-    } | order(_createdAt desc)
+    }
   `;
-  const works: Work[] = await sanityClient.fetch(worksQuery);
-  res.status(200).json({ works });
+  const work: Work = await sanityClient.fetch(workQuery);
+  console.log(work);
+  res.status(200).json({ work });
 }
