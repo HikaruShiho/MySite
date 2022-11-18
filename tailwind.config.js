@@ -34,6 +34,9 @@ module.exports = {
           '"Noto Color Emoji"',
         ],
       },
+      backgroundImage: {
+        'keyvisual-background': "url('/images/bg_keyvisual.jpg')",
+      }
     },
   },
   plugins: [],
