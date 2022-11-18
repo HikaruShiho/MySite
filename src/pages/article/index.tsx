@@ -5,6 +5,7 @@ import Meta from "components/common/Meta";
 import { fetchArticles } from "utils/article/fetchArticle";
 import { QiitaArticle } from "types/article";
 import Card from "components/article/Card";
+import { fetchOgImageUrl } from "utils/article/fetchOgImageUrl";
 
 type Props = {
   articles: QiitaArticle[];
@@ -43,7 +44,13 @@ const index = ({ articles }: Props) => {
 export default index;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const articles: QiitaArticle[] = await fetchArticles();
+  let articles: QiitaArticle[] = await fetchArticles();
+  articles = await Promise.all(
+    articles.map(async (article) => {
+      const ogImageUrl = await fetchOgImageUrl(article.url).then((res) => res);
+      return await { ...article, og_image_url: ogImageUrl };
+    })
+  );
   return {
     props: {
       articles,
