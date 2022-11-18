@@ -20,4 +20,6 @@ export type WorkBody = {
   };
   thumbnail_url: string;
   technology_stack: string[];
+  part: string[];
+  url: string;
 };

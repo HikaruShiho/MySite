@@ -16,6 +16,11 @@ export default {
     {
       name: "description",
       title: "概要",
+      type: "text",
+    },
+    {
+      name: "url",
+      title: "URL or Github",
       type: "string",
     },
     {
@@ -30,6 +35,17 @@ export default {
       of: [
         {
           name: "technology_stack",
+          type: "string",
+        },
+      ],
+    },
+    {
+      name: "part",
+      title: "担当箇所",
+      type: "array",
+      of: [
+        {
+          name: "part",
           type: "string",
         },
       ],

@@ -18,8 +18,8 @@ const Card = ({ work }: Props) => {
             }
             width={960}
             height={540}
-            alt={"sdxwdc"}
-            className="rounded-xl "
+            alt={work.title}
+            className="rounded-xl"
           />
         </dt>
         <dd className="text-center pt-4">{work.sub_title}</dd>

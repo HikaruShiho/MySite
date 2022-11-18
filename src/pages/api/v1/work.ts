@@ -12,6 +12,8 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { id } = req.query;
+  console.log(id);
+  
   const workQuery = groq`
     * [_type == "work" && _id == "${id}"] {
       ...,
@@ -19,6 +21,6 @@ export default async function handler(
     }
   `;
   const work: Work = await sanityClient.fetch(workQuery);
-  console.log(work);
+  console.log("api>>>>>>>>>>>>>>>>",work);
   res.status(200).json({ work });
 }
