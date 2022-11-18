@@ -34,4 +34,5 @@ export interface QiitaArticle {
   };
   page_views_count: number | null;
   team_membership: {} | null;
+  og_image_url: string;
 }
