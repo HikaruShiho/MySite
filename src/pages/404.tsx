@@ -1,12 +1,7 @@
 import Meta from "components/common/Meta";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
 
 const Custom404 = () => {
-  const router = useRouter();
-  console.log(router.pathname);
-
   return (
     <>
       <Meta title={"404"} description={"指定されたページが見つかりません。"} />
