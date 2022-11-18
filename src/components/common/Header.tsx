@@ -1,9 +1,6 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 const Header = () => {
-  const router = useRouter();
-
   return (
     <header className="bg-white">
       <div className="w-full flex item-center justify-between px-10 py-6">
