@@ -19,13 +19,15 @@ const WorkId = ({ work }: Props) => {
         description={""}
       />
       <Header />
-      <main className="bg-baseColor03 pb-12">
-        <div className="w-full max-w-7xl mx-auto px-10 pt-12">
-          <h2 className="text-6xl text-accentColor02 font-bold">Works</h2>
-          <p className="pt-4 font-bold">製作物</p>
+      <main className="bg-baseColor03">
+        <div className="bg-keyvisual-background bg-cover">
+          <div className="w-full max-w-7xl mx-auto px-10 py-12">
+            <h2 className="text-6xl text-white font-bold">Works</h2>
+            <p className="text-white pt-4">製作物</p>
+          </div>
         </div>
-        <div className="w-full max-w-7xl mx-auto p-10">
-          <div className="flex flex-wrap py-10 px-5 bg-white rounded-xl">
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="flex flex-wrap py-10 px-6 bg-white">
             <ul className="flex">
               <li className="px-4 w-2/4">
                 <Image
@@ -87,7 +89,7 @@ const WorkId = ({ work }: Props) => {
                 </div>
               </li>
             </ul>
-            <dl className="w-full">
+            <dl className="w-full pb-12">
               <dt>
                 <h3 className="mx-4 pt-8 pb-2 border-b-2 border-baseColor03 text-4xl text-accentColor02 font-bold relative">
                   About
