@@ -12,7 +12,7 @@ const Meta = ({ title, description }: Props) => {
   return (
     <Head>
       <title>
-        {router.pathname === "/" ? "Shiho's Site" : `${title} | Shiho's Site`}
+        {router.pathname === "/" ? "Shiho's Portfolio" : `${title} | Shiho's Portfolio`}
       </title>
       <meta charSet="utf-8" />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,7 +23,7 @@ const Meta = ({ title, description }: Props) => {
       <meta
         property="og:title"
         content={
-          router.pathname === "/" ? "Shiho's Site" : `${title} | Shiho's Site`
+          router.pathname === "/" ? "Shiho's Portfolio" : `${title} | Shiho's Portfolio`
         }
       />
       <meta property="og:description" content={description} />
@@ -36,7 +36,7 @@ const Meta = ({ title, description }: Props) => {
         content={process.env.NEXT_PUBLIC_BASE_URL + router.pathname}
       />
       <meta property="og:image" content="" />
-      <meta property="og:site_name" content="Shiho's Site" />
+      <meta property="og:site_name" content="Shiho's Portfolio" />
       <meta property="og:locale" content="ja_JP" />
       <link
         rel="shortcut icon"
@@ -65,7 +65,7 @@ const Meta = ({ title, description }: Props) => {
       <link
         rel="start"
         href={process.env.NEXT_PUBLIC_BASE_URL}
-        title="Shiho's Site"
+        title="Shiho's Portfolio"
       />
       <link
         rel="canonical"

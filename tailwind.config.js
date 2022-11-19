@@ -35,7 +35,9 @@ module.exports = {
         ],
       },
       backgroundImage: {
-        'keyvisual-background': "url('/images/bg_keyvisual.jpg')",
+        'keyvisual-background': "url('/images/common/bg_keyvisual.jpg')",
+        'top-keyvisual-background': "url('/images/top/bg_top_keyvisual.jpg')",
+        'top-works-background': "url('/images/top/bg_works.jpg')",
       }
     },
   },

@@ -5,7 +5,6 @@ import { GetStaticProps } from "next";
 import { Work, WorkBody } from "types/work";
 import { fetchWorks } from "utils/work/fetchWork";
 import Card from "components/work/Card";
-import { log } from "console";
 
 type Props = {
   works: Work[];
