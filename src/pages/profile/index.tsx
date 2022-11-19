@@ -17,16 +17,16 @@ const index = () => {
           </div>
         </div>
         <section className="bg-white">
-          <h3 className="w-full max-w-7xl mx-auto px-10 pt-14">
+          <h3 className="w-full max-w-7xl mx-auto px-10 pt-20">
             <span className="text-4xl font-bold border-l-8 pl-4 leading-none border-accentColor02 inline-block">
               About me
             </span>
           </h3>
-          <div className="w-full max-w-7xl mx-auto px-10 pt-10 pb-16">
+          <div className="w-full max-w-7xl mx-auto px-10 pt-10 pb-24">
             <dl className="flex">
               <dt className="w-60 pr-8">
                 <Image
-                  src="/images/profile.jpg"
+                  src="/images/profile/profile.jpg"
                   width={400}
                   height={400}
                   alt="プロフィール画像"
@@ -46,7 +46,7 @@ const index = () => {
                       className="transition-all duration-300 hover:opacity-70"
                     >
                       <Image
-                        src="/images/icon_twitter.jpg"
+                        src="/images/profile/icon_twitter.jpg"
                         width={50}
                         height={50}
                         alt="Twitter"
@@ -62,7 +62,7 @@ const index = () => {
                       className="transition-all duration-300 hover:opacity-70"
                     >
                       <Image
-                        src="/images/icon_github.jpg"
+                        src="/images/profile/icon_github.jpg"
                         width={50}
                         height={50}
                         alt="Github"
@@ -78,7 +78,7 @@ const index = () => {
                       className="transition-all duration-300 hover:opacity-70"
                     >
                       <Image
-                        src="/images/icon_qiita.jpg"
+                        src="/images/profile/icon_qiita.jpg"
                         width={50}
                         height={50}
                         alt="Qiita"
@@ -92,13 +92,23 @@ const index = () => {
           </div>
         </section>
         <section>
-          <h3 className="w-full max-w-7xl mx-auto px-10 pt-14">
+          <h3 className="w-full max-w-7xl mx-auto px-10 pt-20">
             <span className="text-4xl font-bold border-l-8 pl-4 leading-none border-accentColor02 inline-block">
-              History
+              Skill
             </span>
           </h3>
           <div className="w-full max-w-7xl mx-auto px-10 pt-10 pb-28 text-center font-bold text-2xl text-gray-400">
-            Comming soon...
+            <ul>
+              <li>
+                <Image
+                  src={"/images/profile/skill/icon_html.jpg"}
+                  width={200}
+                  height={200}
+                  alt={"HTML5"}
+                  className="rounded-full"
+                />
+              </li>
+            </ul>
           </div>
         </section>
       </main>

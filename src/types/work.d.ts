@@ -3,23 +3,22 @@ export interface Work extends WorkBody {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  _type: "work";
+  _type: string;
 }
 
 export type WorkBody = {
-  title: string;
-  sub_title: string;
   description: string;
-  thumbnail?: string;
-  image: {
-    _type: "image";
+  part: string[];
+  sub_title: string;
+  technology_stack: string[];
+  thumbnail: {
+    _type: string;
     asset: {
       _ref: string;
-      _type: "reference";
+      _type: string;
     };
   };
-  thumbnail_url: string;
-  technology_stack: string[];
-  part: string[];
+  thumbnail_url?: string;
+  title: string;
   url: string;
 };

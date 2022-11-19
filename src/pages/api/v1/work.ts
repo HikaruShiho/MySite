@@ -21,6 +21,5 @@ export default async function handler(
     }
   `;
   const work: Work = await sanityClient.fetch(workQuery);
-  console.log("api>>>>>>>>>>>>>>>>",work);
   res.status(200).json({ work });
 }

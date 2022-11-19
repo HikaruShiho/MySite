@@ -1,32 +1,31 @@
 import axios from "axios";
+import { Work } from "types/work";
 
 /**
  * SanityからWorkデータを全件取得する
- * @returns {Promise}
  */
 export const fetchWorks = async () => {
   try {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/works`
-    );
-    return data;
-  } catch (error) {
-    console.log(error);
+    const { works } = await axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/works`)
+      .then((res) => res.data);
+    return works;
+  } catch (e) {
+    console.log(e);
   }
 };
 
 /**
  * Sanityから特定のWorkデータを1件取得する
- * @param id
- * @returns {Promise}
+ * @param id WorkのID
  */
 export const fetchWorkData = async (id: string) => {
   try {
-    const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/work?id=${id}`
-    );
-    return data;
-  } catch (error) {
-    console.log(error);
+    const { work } = await axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/work?id=${id}`)
+      .then((res) => res.data);
+    return work;
+  } catch (e) {
+    console.log(e);
   }
 };
