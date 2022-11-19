@@ -1,10 +1,17 @@
 import Footer from "components/common/Footer";
 import Header from "components/common/Header";
 import Meta from "components/common/Meta";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Skill } from "types/profile";
+import { fetchSkills } from "utils/profile/fetchSkill";
 
-const index = () => {
+type Props = {
+  skills: string[];
+};
+
+const index = ({ skills }: Props) => {
   return (
     <>
       <Meta title={"Profile"} description={""} />
@@ -97,17 +104,19 @@ const index = () => {
               Skill
             </span>
           </h3>
-          <div className="w-full max-w-7xl mx-auto px-10 pt-10 pb-28 text-center font-bold text-2xl text-gray-400">
-            <ul>
-              <li>
-                <Image
-                  src={"/images/profile/skill/icon_html.jpg"}
-                  width={200}
-                  height={200}
-                  alt={"HTML5"}
-                  className="rounded-full"
-                />
-              </li>
+          <div className="w-full max-w-7xl mx-auto px-8 pt-10 pb-28 text-center font-bold text-2xl text-gray-400">
+            <ul className="flex flex-wrap">
+              {skills.map((skill, i) => (
+                <li key={i} className="w-1/6 p-2">
+                  <Image
+                    src={skill}
+                    width={200}
+                    height={200}
+                    alt={""}
+                    className="rounded-full"
+                  />
+                </li>
+              ))}
             </ul>
           </div>
         </section>
@@ -118,3 +127,12 @@ const index = () => {
 };
 
 export default index;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const skills = await fetchSkills();
+  return {
+    props: {
+      skills: skills.icon_image_url,
+    },
+  };
+};
