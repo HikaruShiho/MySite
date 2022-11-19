@@ -2,9 +2,10 @@ import Footer from "components/common/Footer";
 import Header from "components/common/Header";
 import Meta from "components/common/Meta";
 import { GetStaticProps } from "next";
-import { Work } from "types/work";
+import { Work, WorkBody } from "types/work";
 import { fetchWorks } from "utils/work/fetchWork";
 import Card from "components/work/Card";
+import { log } from "console";
 
 type Props = {
   works: Work[];
@@ -39,8 +40,8 @@ const index = ({ works }: Props) => {
 
 export default index;
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { works } = await fetchWorks();
+export const getStaticProps: GetStaticProps = async () => {
+  const works: Work[] = await fetchWorks();
   return {
     props: {
       works,
