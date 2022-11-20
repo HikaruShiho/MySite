@@ -2,7 +2,6 @@ import Meta from "components/common/Meta";
 import Header from "components/common/Header";
 import Footer from "components/common/Footer";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -11,8 +10,10 @@ export default function Home() {
       <Header />
       <main>
         <div className="bg-top-keyvisual-background bg-right bg-no-repeat bg-cover py-52 border-t-2 border-gray-100">
-          <h2 className="w-full max-w-7xl mx-auto text-5xl px-10 font-bold">
-            Shiho&#x0027;s Portfolio
+          <h2 className="w-full max-w-7xl mx-auto text-5xl px-10 font-bold leading-normal drop-shadow-lg">
+            Welcome to
+            <br />
+            my portfolio site!
           </h2>
         </div>
         <section className="border-t-2 border-gray-100">
@@ -22,7 +23,7 @@ export default function Home() {
           </h3>
           <div className="w-full max-w-7xl mx-auto px-10 pt-8 pb-24">
             <p className="leading-10 text-center">
-              なんちゃってフロントエンドエンジニアShihoのポートフォリオサイトです。
+              なんちゃってエンジニアしほっちのポートフォリオサイトです。
               <br />
               制作物やQiita記事、身につけたスキルを掲載しています。
               <br />
@@ -64,7 +65,9 @@ export default function Home() {
             <span className="block font-bold pt-3">お問い合わせ</span>
           </h3>
           <div className="w-full max-w-5xl mx-auto px-10 pt-8 pb-32">
-            <p className="text-center leading-10 text-2xl font-bold text-gray-400">工事中・・・</p>
+            <p className="text-center leading-10 text-2xl font-bold text-gray-400">
+              工事中・・・
+            </p>
           </div>
         </section>
       </main>

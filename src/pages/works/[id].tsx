@@ -1,5 +1,6 @@
 import Footer from "components/common/Footer";
 import Header from "components/common/Header";
+import Keyvisual from "components/common/Keyvisual";
 import Meta from "components/common/Meta";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
@@ -20,12 +21,7 @@ const WorkId = ({ work }: Props) => {
       />
       <Header />
       <main className="bg-baseColor03">
-        <div className="bg-keyvisual-background bg-cover">
-          <div className="w-full max-w-7xl mx-auto px-10 py-12">
-            <h2 className="text-6xl text-white font-bold">Works</h2>
-            <p className="text-white pt-4">製作物</p>
-          </div>
-        </div>
+        <Keyvisual title={"Works"} sub_title={"制作物"} />
         <div className="w-full max-w-7xl mx-auto">
           <div className="flex flex-wrap py-10 px-6 bg-white">
             <ul className="flex">

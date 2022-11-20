@@ -6,6 +6,7 @@ import { fetchArticles } from "utils/article/fetchArticle";
 import { QiitaArticle } from "types/article";
 import Card from "components/article/Card";
 import { fetchOgImageUrl } from "utils/article/fetchOgImageUrl";
+import Keyvisual from "components/common/Keyvisual";
 
 type Props = {
   articles: QiitaArticle[];
@@ -20,12 +21,7 @@ const index = ({ articles }: Props) => {
       />
       <Header />
       <main className="bg-baseColor03">
-        <div className="bg-keyvisual-background bg-cover">
-          <div className="w-full max-w-7xl mx-auto px-10 py-12">
-            <h2 className="text-6xl text-white font-bold">Qiita</h2>
-            <p className="text-white pt-4">Qiitaで投稿した記事</p>
-          </div>
-        </div>
+        <Keyvisual title={"Qiita"} sub_title={"Qiitaで投稿した記事"} />
         <div className="bg-white  pb-12">
           <ul className="flex flex-wrap py-5 px-5 w-full max-w-7xl mx-auto">
             {articles.map((article) => (
