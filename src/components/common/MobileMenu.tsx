@@ -26,7 +26,7 @@ const MobileMenu = () => {
           Works
         </Link>
         <Link
-          href={"/qiita"}
+          href={"/article"}
           className="text-base text-baseColor02 font-bold my-4"
         >
           Qiita

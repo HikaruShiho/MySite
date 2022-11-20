@@ -5,13 +5,13 @@ import MobileMenu from "./MobileMenu";
 const Header = () => {
   return (
     <header className="bg-white">
-      <div className="w-full flex item-center justify-between px-5 md:px-10 py-3 md:py-5">
-        <h1 className="w-10 md:w-16">
+      <div className="w-full flex item-center justify-between px-5 md:px-10 py-2 md:py-3">
+        <h1 className="w-12 md:w-20">
           <Link href="/">
             <Image
               src={"/images/common/logo.png"}
-              width="512"
-              height="226"
+              width="391"
+              height="303"
               alt="Shiho's Portfolio"
             />
           </Link>
