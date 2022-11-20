@@ -22,8 +22,8 @@ const Card = ({ work }: Props) => {
             className="rounded-xl"
           />
         </dt>
-        <dd className="text-center pt-4">{work.sub_title}</dd>
-        <dd className="text-2xl font-bold text-center pt-1">{work.title}</dd>
+        <dd className="text-center text-sm md:text-lg pt-2 md:pt-4">{work.sub_title}</dd>
+        <dd className="text-lg md:text-2xl font-bold text-center pt-0 md:pt-1">{work.title}</dd>
       </dl>
     </Link>
   );
