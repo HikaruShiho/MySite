@@ -20,10 +20,10 @@ const WorkId = ({ work }: Props) => {
         description={""}
       />
       <Header />
-      <main className="bg-baseColor03">
+      <main className="bg-baseColor03 dark:bg-baseColor01">
         <Keyvisual title={"Works"} sub_title={"制作物"} />
         <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-wrap py-10 px-6 bg-white">
+          <div className="flex flex-wrap py-10 px-6 bg-white  dark:bg-baseColor01">
             <ul className="flex">
               <li className="px-4 w-2/4">
                 <Image
@@ -39,7 +39,7 @@ const WorkId = ({ work }: Props) => {
                 />
               </li>
               <li className="px-4 w-2/4">
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-2xl font-bold dark:text-white">
                   {work[0].sub_title}　{work[0].title}
                 </h3>
                 <div className="pt-3">
@@ -47,13 +47,13 @@ const WorkId = ({ work }: Props) => {
                     <Link
                       href={work[0].url}
                       target="_blank"
-                      className="text-gray-300 hover:opacity-70 transition-all duration-300"
+                      className="text-gray-300 hover:opacity-70 transition-all duration-300 dark:text-gray-500"
                     >
                       {work[0].url}
                     </Link>
                   </div>
                   <dl className="flex py-1">
-                    <dt className="w-20 pt-1">担当箇所</dt>
+                    <dt className="w-20 pt-1 dark:text-white">担当箇所</dt>
                     <dd className="flex-1">
                       <div className="flex flex-wrap">
                         {work[0].part.map((icon, i) => (
@@ -68,7 +68,7 @@ const WorkId = ({ work }: Props) => {
                     </dd>
                   </dl>
                   <dl className="flex py-1">
-                    <dt className="w-20 pt-1">使用技術</dt>
+                    <dt className="w-20 pt-1 dark:text-white">使用技術</dt>
                     <dd className="flex-1">
                       <div className="flex flex-wrap">
                         {work[0].technology_stack.map((stack, i) => (
@@ -92,7 +92,7 @@ const WorkId = ({ work }: Props) => {
                   <div className="w-10 h-0.5 bg-accentColor02 absolute -bottom-0.5 left-0"></div>
                 </h3>
               </dt>
-              <dd className="pt-4 mx-4">{work[0].description}</dd>
+              <dd className="pt-4 mx-4 dark:text-white">{work[0].description}</dd>
             </dl>
           </div>
         </div>

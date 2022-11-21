@@ -16,11 +16,11 @@ const index = ({ skills }: Props) => {
     <>
       <Meta title={"Profile"} description={""} />
       <Header />
-      <main className="bg-baseColor03">
+      <main className="bg-baseColor03 dark:bg-baseColor01">
         <Keyvisual title={"Profile"} sub_title={"プロフィール"} />
-        <section className="bg-white">
+        <section className="bg-white dark:bg-baseColor01">
           <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20">
-            <span className="text-2xl md:text-4xl font-bold border-l-4 md:border-l-8 pl-2 md:pl-4 leading-none border-accentColor02 inline-block">
+            <span className="text-2xl md:text-4xl font-bold border-l-4 md:border-l-8 pl-2 md:pl-4 leading-none border-accentColor02 inline-block dark:text-white">
               About me
             </span>
           </h3>
@@ -36,7 +36,7 @@ const index = ({ skills }: Props) => {
                 />
               </dt>
               <dd className="w-full md:flex-1 text-sm md:text-base pt-4 md:pt-0">
-                <div className="leading-loose ">
+                <div className="leading-loose dark:text-white">
                   兵庫出身、埼玉在住のしほっちです。
                   <br />
                   高校卒業後、大手高炉メーカーにて6年間勤務。
@@ -106,7 +106,7 @@ const index = ({ skills }: Props) => {
         </section>
         <section>
           <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20">
-            <span className="text-2xl md:text-4xl font-bold border-l-4 md:border-l-8 pl-2 md:pl-4 leading-none border-accentColor02 inline-block">
+            <span className="text-2xl md:text-4xl font-bold border-l-4 md:border-l-8 pl-2 md:pl-4 leading-none border-accentColor02 inline-block dark:text-white">
               Skill
             </span>
           </h3>

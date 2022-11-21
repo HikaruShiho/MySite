@@ -16,9 +16,9 @@ const index = ({ works }: Props) => {
     <>
       <Meta title={"Works"} description={""} />
       <Header />
-      <main className="bg-baseColor03">
+      <main className="bg-baseColor03 dark:bg-baseColor01">
         <Keyvisual title={"Works"} sub_title={"制作物"} />
-        <div className="bg-white">
+        <div className="bg-white dark:bg-baseColor01">
           <ul className="flex flex-wrap py-6 md:py-20 px-5 w-full max-w-7xl mx-auto">
             {works.map((work) => (
               <li key={work._id} className="w-full md:w-1/2 px-0 md:px-5 py-3">

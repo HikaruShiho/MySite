@@ -20,9 +20,9 @@ const index = ({ articles }: Props) => {
         description={"Qiitaにて投稿した記事を掲載しています。"}
       />
       <Header />
-      <main className="bg-baseColor03">
+      <main className="bg-baseColor03 dark:bg-baseColor01">
         <Keyvisual title={"Qiita"} sub_title={"Qiitaで投稿した記事"} />
-        <div className="bg-white pt-10 md:pt-16 pb-10 md:pb-16">
+        <div className="bg-white pt-10 md:pt-16 pb-10 md:pb-16 dark:bg-baseColor01">
           <ul className="flex flex-wrap py-2 md:py-5 px-3 md:px-5 w-full max-w-7xl mx-auto">
             {articles.map((article) => (
               <li key={article.id} className="w-full sm:w-1/2 md:w-2/6 px-2 md:px-5 py-2 md:py-3">
