@@ -7,7 +7,7 @@ const MobileMenu = () => {
       <Menu
         isOpen={false}
         width={180}
-        className="bg-white"
+        className="bg-baseColor03 dark:bg-baseColor01"
         itemListElement={"nav"}
         pageWrapId={"page-wrap"}
         outerContainerId={"outer-container"}
@@ -15,19 +15,19 @@ const MobileMenu = () => {
       >
         <Link
           href={"/profile"}
-          className="text-base text-baseColor02 font-bold my-4"
+          className="text-base text-baseColor02 font-bold my-4 dark:text-white"
         >
           Profile
         </Link>
         <Link
           href={"/works"}
-          className="text-base text-baseColor02 font-bold my-4"
+          className="text-base text-baseColor02 font-bold my-4 dark:text-white"
         >
           Works
         </Link>
         <Link
           href={"/article"}
-          className="text-base text-baseColor02 font-bold my-4"
+          className="text-base text-baseColor02 font-bold my-4 dark:text-white"
         >
           Qiita
         </Link>

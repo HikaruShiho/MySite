@@ -18,10 +18,10 @@ const Card = ({ article }: Props) => {
             width={828}
             height={435}
             alt={article.title}
-            className="border-2 rounded-t-xl border-gray-100"
+            className="border-2 rounded-t-xl border-gray-100 dark:border-gray-400"
           />
         </dt>
-        <dd className="pt-2 md:pt-4 pb-3 md:pb-5 px-2 md:px-3 rounded-b-xl bg-gray-100">
+        <dd className="pt-2 md:pt-4 pb-3 md:pb-5 px-2 md:px-3 rounded-b-xl bg-gray-100 dark:bg-baseColor02">
           <ul className="flex flex-wrap">
             {article.tags.map((tag, i) => (
               <li key={i}>
