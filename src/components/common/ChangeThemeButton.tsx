@@ -16,7 +16,7 @@ const ChangeThemeButton = () => {
       {mounted && (
         <>
           {theme === "dark" ? (
-            <BsMoonStars size={14} color={"#fff"} className="" />
+            <BsMoonStars size={14} color={"#fff"} />
           ) : (
             <BsSun size={16} />
           )}
