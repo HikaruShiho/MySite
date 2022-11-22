@@ -1,8 +1,7 @@
-import Footer from "components/common/Footer";
-import Header from "components/common/Header";
+import Layout from "components/common/Layout";
 import Keyvisual from "components/common/Keyvisual";
-import Meta from "components/common/Meta";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { Work } from "types/work";
@@ -16,18 +15,30 @@ type Props = {
 const WorkId = ({ work }: Props) => {
   return (
     <>
-      <Meta
-        title={`${work[0].sub_title} ${work[0].title} | Works`}
-        description={""}
-      />
-      <Header />
-      <motion.div
-        initial={{ opacity: 0, translateY: "50px" }}
-        animate={{ opacity: 1, translateY: "0%" }}
-        exit={{ opacity: 0 }}
-        transition={{ ease: "easeOut", duration: 0.6 }}
-      >
-        <main className="bg-baseColor03 dark:bg-baseColor01">
+      <Head>
+        <title>{work[0].title} | Works | Shiho&apos;s Portfolio</title>
+        <meta name="description" content={work[0].description} />
+        <meta
+          property="og:title"
+          content={`${work[0].title} | Works | Shiho's Portfolio`}
+        />
+        <meta property="og:description" content={work[0].description} />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/works/${work[0]._id}`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}/works/${work[0]._id}`}
+        />
+      </Head>
+      <Layout>
+        <motion.div
+          initial={{ opacity: 0, translateY: "50px" }}
+          animate={{ opacity: 1, translateY: "0%" }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+        >
           <Keyvisual title={"Works"} sub_title={"制作物"} />
           <div className="w-full max-w-7xl mx-auto">
             <div className="flex flex-wrap py-10 px-6 bg-white  dark:bg-baseColor01">
@@ -94,7 +105,7 @@ const WorkId = ({ work }: Props) => {
               </ul>
               <dl className="w-full pb-12">
                 <dt>
-                  <h3 className="mx-4 pt-8 pb-2 border-b-2 border-baseColor03 text-4xl text-accentColor02 font-bold relative">
+                  <h3 className="mx-4 pt-8 pb-2 border-b-2 border-baseColor03 text-4xl text-accentColor02 font-bold relative dark:text-white">
                     About
                     <div className="w-10 h-0.5 bg-accentColor02 absolute -bottom-0.5 left-0"></div>
                   </h3>
@@ -105,9 +116,8 @@ const WorkId = ({ work }: Props) => {
               </dl>
             </div>
           </div>
-        </main>
-        <Footer />
-      </motion.div>
+        </motion.div>
+      </Layout>
     </>
   );
 };

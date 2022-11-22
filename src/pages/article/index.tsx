@@ -1,13 +1,12 @@
 import { GetServerSideProps } from "next";
-import Footer from "components/common/Footer";
-import Header from "components/common/Header";
-import Meta from "components/common/Meta";
 import { fetchArticles } from "utils/article/fetchArticle";
 import { QiitaArticle } from "types/article";
 import Card from "components/article/Card";
 import { fetchOgImageUrl } from "utils/article/fetchOgImageUrl";
 import Keyvisual from "components/common/Keyvisual";
 import { motion } from "framer-motion";
+import Head from "next/head";
+import Layout from "components/common/Layout";
 
 type Props = {
   articles: QiitaArticle[];
@@ -16,18 +15,33 @@ type Props = {
 const index = ({ articles }: Props) => {
   return (
     <>
-      <Meta
-        title={"Qiita記事一覧"}
-        description={"Qiitaにて投稿した記事を掲載しています。"}
-      />
-      <Header />
-      <motion.div
-        initial={{ opacity: 0, translateY: "50px" }}
-        animate={{ opacity: 1, translateY: "0%" }}
-        exit={{ opacity: 0 }}
-        transition={{ ease: "easeOut", duration: 0.6 }}
-      >
-        <main className="bg-baseColor03 dark:bg-baseColor01">
+      <Head>
+        <title>Qiita記事一覧 | Shiho&apos;s Portfolio</title>
+        <meta
+          name="description"
+          content="Qiitaにて投稿した記事を掲載しています。"
+        />
+        <meta property="og:title" content="Qiita記事一覧 | Shiho's Portfolio" />
+        <meta
+          property="og:description"
+          content="Qiitaにて投稿した記事を掲載しています。"
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/article`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}/article`}
+        />
+      </Head>
+      <Layout>
+        <motion.div
+          initial={{ opacity: 0, translateY: "50px" }}
+          animate={{ opacity: 1, translateY: "0%" }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+        >
           <Keyvisual title={"Qiita"} sub_title={"Qiitaで投稿した記事"} />
           <div className="bg-white pt-10 md:pt-16 pb-10 md:pb-16 dark:bg-baseColor01">
             <ul className="flex flex-wrap py-2 md:py-5 px-3 md:px-5 w-full max-w-7xl mx-auto">
@@ -41,9 +55,8 @@ const index = ({ articles }: Props) => {
               ))}
             </ul>
           </div>
-        </main>
-        <Footer />
-      </motion.div>
+        </motion.div>
+      </Layout>
     </>
   );
 };
