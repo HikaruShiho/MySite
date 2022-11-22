@@ -128,7 +128,7 @@ const index = ({ skills }: Props) => {
               </dl>
             </div>
           </section>
-          <section>
+          <section className="bg-baseColor03 dark:bg-baseColor01">
             <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20">
               <span className="text-2xl md:text-4xl font-bold border-l-4 md:border-l-8 pl-2 md:pl-4 leading-none border-accentColor02 inline-block dark:text-white">
                 Skill
