@@ -136,7 +136,7 @@ const index = ({ skills }: Props) => {
             </h3>
             <div className="w-full max-w-7xl mx-auto px-4 md:px-8 pt-5 md:pt-8 pb-12 md:pb-28 text-center font-bold ">
               <ul className="flex flex-wrap">
-                {skills.map((skill, i) => (
+                {skills?.map((skill, i) => (
                   <li key={i} className="w-1/4 sm:w-1/5 md:w-1/6 p-1 md:p-2">
                     <Image
                       src={skill}
