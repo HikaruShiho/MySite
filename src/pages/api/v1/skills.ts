@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { groq } from "next-sanity";
-import { sanityClient } from "lib/sanity/config";
+import { sanityClient } from "../../../../sanity/config";
 import { Skill } from "types/profile";
 
 type Data = {
