@@ -1,12 +1,11 @@
-import Footer from "components/common/Footer";
-import Header from "components/common/Header";
-import Meta from "components/common/Meta";
 import { GetStaticProps } from "next";
-import { Work, WorkBody } from "types/work";
+import { Work } from "types/work";
 import { fetchWorks } from "utils/work/fetchWork";
 import Card from "components/work/Card";
 import Keyvisual from "components/common/Keyvisual";
 import { motion } from "framer-motion";
+import Head from "next/head";
+import Layout from "components/common/Layout";
 
 type Props = {
   works: Work[];
@@ -15,15 +14,30 @@ type Props = {
 const index = ({ works }: Props) => {
   return (
     <>
-      <Meta title={"Works"} description={""} />
-      <Header />
-      <motion.div
-        initial={{ opacity: 0, translateY: "50px" }}
-        animate={{ opacity: 1, translateY: "0%" }}
-        exit={{ opacity: 0 }}
-        transition={{ ease: "easeOut", duration: 0.6 }}
-      >
-        <main className="bg-baseColor03 dark:bg-baseColor01">
+      <Head>
+        <title>Works | Shiho&apos;s Portfolio</title>
+        <meta name="description" content="過去の製作物を紹介しています。" />
+        <meta property="og:title" content="Works | Shiho's Portfolio" />
+        <meta
+          property="og:description"
+          content="過去の製作物を紹介しています。"
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/works`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}/works`}
+        />
+      </Head>
+      <Layout>
+        <motion.div
+          initial={{ opacity: 0, translateY: "50px" }}
+          animate={{ opacity: 1, translateY: "0%" }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+        >
           <Keyvisual title={"Works"} sub_title={"制作物"} />
           <div className="bg-white dark:bg-baseColor01">
             <ul className="flex flex-wrap py-6 md:py-20 px-5 w-full max-w-7xl mx-auto">
@@ -37,9 +51,8 @@ const index = ({ works }: Props) => {
               ))}
             </ul>
           </div>
-        </main>
-        <Footer />
-      </motion.div>
+        </motion.div>
+      </Layout>
     </>
   );
 };

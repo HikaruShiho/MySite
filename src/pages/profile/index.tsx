@@ -1,12 +1,11 @@
-import Footer from "components/common/Footer";
-import Header from "components/common/Header";
 import Keyvisual from "components/common/Keyvisual";
-import Meta from "components/common/Meta";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchSkills } from "utils/profile/fetchSkill";
 import { motion } from "framer-motion";
+import Head from "next/head";
+import Layout from "components/common/Layout";
 
 type Props = {
   skills: string[];
@@ -15,15 +14,33 @@ type Props = {
 const index = ({ skills }: Props) => {
   return (
     <>
-      <Meta title={"Profile"} description={""} />
-      <Header />
-      <motion.div
-        initial={{ opacity: 0, translateY: "30px" }}
-        animate={{ opacity: 1, translateY: "0%" }}
-        exit={{ opacity: 0}}
-        transition={{ ease: "easeOut", duration: 0.6 }}
-      >
-        <main className="bg-baseColor03 dark:bg-baseColor01">
+      <Head>
+        <title>Profile | Shiho&apos;s Portfolio</title>
+        <meta
+          name="description"
+          content="エンジニアしほっちのプロフィールページです。身につけたスキルや経歴、SNSを掲載しています。"
+        />
+        <meta property="og:title" content="Profile | Shiho's Portfolio" />
+        <meta
+          property="og:description"
+          content="エンジニアしほっちのプロフィールページです。身につけたスキルや経歴、SNSを掲載しています。"
+        />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/profile`}
+        />
+        <link
+          rel="canonical"
+          href={`${process.env.NEXT_PUBLIC_BASE_URL}/profile`}
+        />
+      </Head>
+      <Layout>
+        <motion.div
+          initial={{ opacity: 0, translateY: "30px" }}
+          animate={{ opacity: 1, translateY: "0%" }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+        >
           <Keyvisual title={"Profile"} sub_title={"プロフィール"} />
           <section className="bg-white dark:bg-baseColor01">
             <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20">
@@ -33,7 +50,7 @@ const index = ({ skills }: Props) => {
             </h3>
             <div className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-5 md:pt-10 pb-12 md:pb-24">
               <dl className="block md:flex">
-                <dt className="w-52 md:w-7 pr-0 md:pr-8 mx-auto">
+                <dt className="w-52 md:w-72 pr-0 md:pr-8 mx-auto">
                   <Image
                     src="/images/profile/profile.jpg"
                     width={400}
@@ -111,7 +128,7 @@ const index = ({ skills }: Props) => {
               </dl>
             </div>
           </section>
-          <section>
+          <section className="bg-baseColor03 dark:bg-baseColor01">
             <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20">
               <span className="text-2xl md:text-4xl font-bold border-l-4 md:border-l-8 pl-2 md:pl-4 leading-none border-accentColor02 inline-block dark:text-white">
                 Skill
@@ -133,9 +150,8 @@ const index = ({ skills }: Props) => {
               </ul>
             </div>
           </section>
-        </main>
-        <Footer />
-      </motion.div>
+        </motion.div>
+      </Layout>
     </>
   );
 };

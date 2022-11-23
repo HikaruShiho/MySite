@@ -1,28 +1,33 @@
-import Meta from "components/common/Meta";
-import Header from "components/common/Header";
-import Footer from "components/common/Footer";
 import Link from "next/link";
 import { BsTwitter } from "react-icons/bs";
 import { motion } from "framer-motion";
+import KeyvisualText from "components/top/KeyvisualText";
+import Layout from "components/common/Layout";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
-      <Meta description={"トップページです"} />
-      <Header />
-      <motion.div
-        initial={{ opacity: 0, translateY: "50px" }}
-        animate={{ opacity: 1, translateY: "0%" }}
-        exit={{ opacity: 0 }}
-        transition={{ ease: "easeOut", duration: 0.6 }}
-      >
-        <main>
+      <Head>
+        <title>Shiho&apos;s Portfolio</title>
+        <meta name="description" content="トップページです" />
+        <meta property="og:title" content="Shiho's Portfolio" />
+        <meta property="og:description" content="トップページです" />
+        <meta
+          property="og:url"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/`}
+        />
+        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_BASE_URL}/`} />
+      </Head>
+      <Layout>
+        <motion.div
+          initial={{ opacity: 0, translateY: "50px" }}
+          animate={{ opacity: 1, translateY: "0%" }}
+          exit={{ opacity: 0 }}
+          transition={{ ease: "easeOut", duration: 0.6 }}
+        >
           <div className="bg-top-keyvisual-background bg-center md:bg-right bg-no-repeat bg-cover py-40 md:py-52 border-t-2 border-gray-100 dark:bg-top-keyvisual-background-dark dark:border-baseColor01">
-            <h2 className="w-full max-w-5xl mx-auto text-3xl leading-normal md:leading-snug md:text-5xl px-5 md:px-10 font-bold dark:text-white">
-              Welcome to
-              <br />
-              my portfolio site!
-            </h2>
+            <KeyvisualText />
           </div>
           <section className="dark:bg-baseColor01 border-t-2 border-gray-100 dark:border-baseColor01">
             <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20 text-center">
@@ -103,9 +108,8 @@ export default function Home() {
               </div>
             </div>
           </section>
-        </main>
-      </motion.div>
-      <Footer />
+        </motion.div>
+      </Layout>
     </>
   );
 }
