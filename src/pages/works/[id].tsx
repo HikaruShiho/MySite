@@ -71,7 +71,9 @@ const WorkId = ({ work }: Props) => {
                       </Link>
                     </div>
                     <dl className="flex py-1">
-                      <dt className="w-14 md:w-20 pt-1.5 md:pt-1 dark:text-white text-xs md:text-base">担当箇所</dt>
+                      <dt className="w-14 md:w-20 pt-1.5 md:pt-1 dark:text-white text-xs md:text-base">
+                        担当箇所
+                      </dt>
                       <dd className="flex-1">
                         <div className="flex flex-wrap">
                           {work[0].part.map((icon, i) => (

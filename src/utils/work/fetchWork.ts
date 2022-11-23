@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Work } from "types/work";
 
 /**
  * SanityからWorkデータを全件取得する
