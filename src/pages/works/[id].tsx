@@ -131,7 +131,7 @@ export default WorkId;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const works: Work[] = await fetchWorks();
-  const paths = works.map((work: Work) => {
+  const paths = works?.map((work: Work) => {
     return { params: { id: work._id } };
   });
   return { paths, fallback: false };
