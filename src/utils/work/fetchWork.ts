@@ -1,15 +1,19 @@
-import axios from "axios";
+import { sanityClient } from "lib/sanity/config";
+import { groq } from "next-sanity";
+import { Work } from "types/work";
 
 /**
  * SanityからWorkデータを全件取得する
  */
 export const fetchWorks = async () => {
-  try {
-    const { works } = await axios.get("/api/v1/works").then((res) => res.data);
-    return works;
-  } catch (e) {
-    console.log(e);
-  }
+  const worksQuery = groq`
+    * [_type == "work"] {
+      ...,
+      "thumbnail_url": thumbnail.asset->url
+    } | order(_createdAt desc)
+  `;
+  const works: Work[] = await sanityClient.fetch(worksQuery);
+  return works;
 };
 
 /**
@@ -17,10 +21,14 @@ export const fetchWorks = async () => {
  * @param id WorkのID
  */
 export const fetchWorkData = async (id: string) => {
+  const workQuery = groq`
+    * [_type == "work" && _id == "${id}"] {
+      ...,
+      "thumbnail_url": thumbnail.asset->url
+    }
+  `;
   try {
-    const { work } = await axios
-      .get("/api/v1/work?id=${id}")
-      .then((res) => res.data);
+    const work: Work = await sanityClient.fetch(workQuery);
     return work;
   } catch (e) {
     console.log(e);

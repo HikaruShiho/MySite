@@ -132,15 +132,15 @@ const WorkId = ({ work }: Props) => {
 export default WorkId;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const works: Work[] = await fetchWorks();
-  const paths = works?.map((work: Work) => {
+  const works = await fetchWorks();
+  const paths = works?.map((work) => {
     return { params: { id: work._id } };
   });
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const work: Work = await fetchWorkData(params?.id as string);
+  const work = await fetchWorkData(params?.id as string);
   return {
     props: {
       work,

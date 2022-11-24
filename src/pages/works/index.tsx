@@ -60,7 +60,7 @@ const index = ({ works }: Props) => {
 export default index;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const works: Work[] = await fetchWorks();
+  const works = await fetchWorks();
   return {
     props: {
       works,
