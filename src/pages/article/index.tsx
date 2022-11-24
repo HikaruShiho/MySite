@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { fetchArticles } from "utils/article/fetchArticle";
 import { QiitaArticle } from "types/article";
 import Card from "components/article/Card";
@@ -63,12 +63,12 @@ const index = ({ articles }: Props) => {
 
 export default index;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   let articles: QiitaArticle[] = await fetchArticles();
   articles = await Promise.all(
     articles.map(async (article) => {
       const ogImageUrl = await fetchOgImageUrl(article.url).then((res) => res);
-      return await { ...article, og_image_url: ogImageUrl };
+      return { ...article, og_image_url: ogImageUrl };
     })
   );
   return {
