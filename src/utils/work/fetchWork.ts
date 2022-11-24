@@ -5,9 +5,7 @@ import axios from "axios";
  */
 export const fetchWorks = async () => {
   try {
-    const { works } = await axios
-      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/works`)
-      .then((res) => res.data);
+    const { works } = await axios.get("/api/v1/works").then((res) => res.data);
     return works;
   } catch (e) {
     console.log(e);
@@ -21,7 +19,7 @@ export const fetchWorks = async () => {
 export const fetchWorkData = async (id: string) => {
   try {
     const { work } = await axios
-      .get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/work?id=${id}`)
+      .get("/api/v1/work?id=${id}")
       .then((res) => res.data);
     return work;
   } catch (e) {

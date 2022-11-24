@@ -8,7 +8,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
     <ThemeProvider attribute="class" defaultTheme="light">
       <AnimatePresence
         onExitComplete={() => window.scrollTo(0, 0)}
-        exitBeforeEnter
+        mode="wait"
       >
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
