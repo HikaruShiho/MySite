@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { jsonLdScriptProps } from "react-schemaorg";
 import { WebPage } from "schema-dts";
+import { url } from "inspector";
 
 const Custom404 = () => {
   const meta = {
@@ -14,28 +15,19 @@ const Custom404 = () => {
   return (
     <>
       <Head>
-        <title>404 Not Found | Shiho&apos;s Portfolio</title>
-        <meta name="description" content="指定されたページが見つかりません。" />
-        <meta property="og:title" content="404 Not Found | Shiho's Portfolio" />
-        <meta
-          property="og:description"
-          content="指定されたページが見つかりません。"
-        />
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/404`}
-        />
-        <link
-          rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/404`}
-        />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={meta.url} />
+        <link rel="canonical" href={meta.url} />
         <script
           {...jsonLdScriptProps<WebPage>({
             "@context": "https://schema.org",
             "@type": "WebPage",
             name: meta.title,
             url: meta.url,
-            image: `${meta.url}share.jpg`,
+            image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
             description: meta.description,
           })}
         />
