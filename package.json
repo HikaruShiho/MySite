@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@sanity/cli": "^2.35.0",
+    "@types/gtag.js": "^0.0.12",
     "@types/react-burger-menu": "^2.8.3",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
