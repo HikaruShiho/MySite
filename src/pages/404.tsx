@@ -1,8 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { jsonLdScriptProps } from "react-schemaorg";
+import { WebPage } from "schema-dts";
 
 const Custom404 = () => {
+  const meta = {
+    title: "404 Not Found | Shiho's Portfolio",
+    description: "指定されたページが見つかりません。",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/404`,
+  };
+
   return (
     <>
       <Head>
@@ -20,6 +28,16 @@ const Custom404 = () => {
         <link
           rel="canonical"
           href={`${process.env.NEXT_PUBLIC_BASE_URL}/404`}
+        />
+        <script
+          {...jsonLdScriptProps<WebPage>({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: meta.title,
+            url: meta.url,
+            image: `${meta.url}share.jpg`,
+            description: meta.description,
+          })}
         />
       </Head>
       <motion.div

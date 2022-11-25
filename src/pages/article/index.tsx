@@ -7,12 +7,21 @@ import Keyvisual from "components/common/Keyvisual";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Layout from "components/common/Layout";
+import { jsonLdScriptProps } from "react-schemaorg";
+import { WebPage } from "schema-dts";
 
 type Props = {
   articles: QiitaArticle[];
 };
 
 const index = ({ articles }: Props) => {
+  const meta = {
+    title: "Shiho's Portfolio",
+    description:
+      "なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+  };
+
   return (
     <>
       <Head>
@@ -33,6 +42,16 @@ const index = ({ articles }: Props) => {
         <link
           rel="canonical"
           href={`${process.env.NEXT_PUBLIC_BASE_URL}/article`}
+        />
+        <script
+          {...jsonLdScriptProps<WebPage>({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: meta.title,
+            url: meta.url,
+            image: `${meta.url}share.jpg`,
+            description: meta.description,
+          })}
         />
       </Head>
       <Layout>

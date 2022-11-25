@@ -4,20 +4,36 @@ import { motion } from "framer-motion";
 import KeyvisualText from "components/top/KeyvisualText";
 import Layout from "components/common/Layout";
 import Head from "next/head";
+import { jsonLdScriptProps } from "react-schemaorg";
+import { WebPage } from "schema-dts";
 
 export default function Home() {
+  const meta = {
+    title: "Shiho's Portfolio",
+    description:
+      "なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+  };
+
   return (
     <>
       <Head>
-        <title>Shiho&apos;s Portfolio</title>
-        <meta name="description" content="なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。" />
-        <meta property="og:title" content="Shiho's Portfolio" />
-        <meta property="og:description" content="なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。" />
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/`}
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={meta.url} />
+        <link rel="canonical" href={meta.url} />
+        <script
+          {...jsonLdScriptProps<WebPage>({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: meta.title,
+            url: meta.url,
+            image: `${meta.url}share.jpg`,
+            description: meta.description,
+          })}
         />
-        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_BASE_URL}/`} />
       </Head>
       <Layout>
         <motion.div
