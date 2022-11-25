@@ -37,6 +37,8 @@ const index = ({ works }: Props) => {
             url: meta.url,
             image: `${meta.url}share.jpg`,
             description: meta.description,
+            headline: meta.title,
+            author: "Shiho",
           })}
         />
       </Head>
