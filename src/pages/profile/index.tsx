@@ -15,40 +15,28 @@ type Props = {
 
 const index = ({ skills }: Props) => {
   const meta = {
-    title: "Shiho's Portfolio",
+    title: "Profile | Shiho's Portfolio",
     description:
-      "なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。",
-    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+      "エンジニアしほっちのプロフィールページです。身につけたスキルや経歴、SNSを掲載しています。",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/profile`,
   };
 
   return (
     <>
       <Head>
-        <title>Profile | Shiho&apos;s Portfolio</title>
-        <meta
-          name="description"
-          content="エンジニアしほっちのプロフィールページです。身につけたスキルや経歴、SNSを掲載しています。"
-        />
-        <meta property="og:title" content="Profile | Shiho's Portfolio" />
-        <meta
-          property="og:description"
-          content="エンジニアしほっちのプロフィールページです。身につけたスキルや経歴、SNSを掲載しています。"
-        />
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/profile`}
-        />
-        <link
-          rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/profile`}
-        />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={meta.url} />
+        <link rel="canonical" href={meta.url} />
         <script
           {...jsonLdScriptProps<WebPage>({
             "@context": "https://schema.org",
             "@type": "WebPage",
             name: meta.title,
             url: meta.url,
-            image: `${meta.url}share.jpg`,
+            image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
             description: meta.description,
           })}
         />

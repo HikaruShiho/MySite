@@ -7,29 +7,38 @@ import Link from "next/link";
 import { Work } from "types/work";
 import { fetchWorks, fetchWorkData } from "utils/work/fetchWork";
 import { motion } from "framer-motion";
+import { jsonLdScriptProps } from "react-schemaorg";
+import { WebPage } from "schema-dts";
 
 type Props = {
   work: Work[];
 };
 
 const WorkId = ({ work }: Props) => {
+  const meta = {
+    title: `${work[0].title} | Works | Shiho's Portfolio`,
+    description: work[0].description,
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/works/${work[0]._id}`,
+  };
+
   return (
     <>
       <Head>
-        <title>{work[0].title} | Works | Shiho&apos;s Portfolio</title>
-        <meta name="description" content={work[0].description} />
-        <meta
-          property="og:title"
-          content={`${work[0].title} | Works | Shiho's Portfolio`}
-        />
-        <meta property="og:description" content={work[0].description} />
-        <meta
-          property="og:url"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/works/${work[0]._id}`}
-        />
-        <link
-          rel="canonical"
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/works/${work[0]._id}`}
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={meta.url} />
+        <link rel="canonical" href={meta.url} />
+        <script
+          {...jsonLdScriptProps<WebPage>({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: meta.title,
+            url: meta.url,
+            image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
+            description: meta.description,
+          })}
         />
       </Head>
       <Layout>

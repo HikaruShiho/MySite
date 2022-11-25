@@ -30,7 +30,7 @@ export default function Home() {
             "@type": "WebPage",
             name: meta.title,
             url: meta.url,
-            image: `${meta.url}share.jpg`,
+            image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
             description: meta.description,
           })}
         />
