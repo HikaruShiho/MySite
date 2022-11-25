@@ -2,8 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { WebPage } from "schema-dts";
-import { url } from "inspector";
+import { BlogPosting } from "schema-dts";
 
 const Custom404 = () => {
   const meta = {
@@ -22,9 +21,9 @@ const Custom404 = () => {
         <meta property="og:url" content={meta.url} />
         <link rel="canonical" href={meta.url} />
         <script
-          {...jsonLdScriptProps<WebPage>({
+          {...jsonLdScriptProps<BlogPosting>({
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "BlogPosting",
             name: meta.title,
             url: meta.url,
             image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
