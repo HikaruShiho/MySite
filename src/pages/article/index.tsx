@@ -38,6 +38,8 @@ const index = ({ articles }: Props) => {
             url: meta.url,
             image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
             description: meta.description,
+            headline: meta.title,
+            author: "Shiho",
           })}
         />
       </Head>
