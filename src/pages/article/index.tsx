@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 import Layout from "components/common/Layout";
 import { jsonLdScriptProps } from "react-schemaorg";
-import { WebPage } from "schema-dts";
+import { BlogPosting } from "schema-dts";
 
 type Props = {
   articles: QiitaArticle[];
@@ -31,9 +31,9 @@ const index = ({ articles }: Props) => {
         <meta property="og:url" content={meta.url} />
         <link rel="canonical" href={meta.url} />
         <script
-          {...jsonLdScriptProps<WebPage>({
+          {...jsonLdScriptProps<BlogPosting>({
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "BlogPosting",
             name: meta.title,
             url: meta.url,
             image: `${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`,
