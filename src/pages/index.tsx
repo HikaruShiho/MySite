@@ -10,9 +10,9 @@ export default function Home() {
     <>
       <Head>
         <title>Shiho&apos;s Portfolio</title>
-        <meta name="description" content="トップページです" />
+        <meta name="description" content="なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。" />
         <meta property="og:title" content="Shiho's Portfolio" />
-        <meta property="og:description" content="トップページです" />
+        <meta property="og:description" content="なんちゃってエンジニアしほっちのポートフォリオサイトです。過去の制作物やQiita記事、身につけたスキルを掲載しています。フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、フルスタックエンジニアになることを目指し日々努力中。" />
         <meta
           property="og:url"
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/`}
@@ -42,7 +42,7 @@ export default function Home() {
               <p className="leading-8 md:leading-10 md:text-center dark:text-white">
                 なんちゃってエンジニアしほっちのポートフォリオサイトです。
                 <br />
-                制作物やQiita記事、身につけたスキルを掲載しています。
+                過去の制作物やQiita記事、身につけたスキルを掲載しています。
                 <br />
                 フロントエンド・サーバーサイド・インフラなど様々なスキルを身につけ、
                 <br className="hidden md:inline" />
