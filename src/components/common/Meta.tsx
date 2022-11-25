@@ -1,11 +1,32 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { GA_TRACKING_ID } from "utils/gtag";
 
 const Meta = () => {
   const router = useRouter();
 
   return (
     <Head>
+      {GA_TRACKING_ID && (
+        <>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
+        </>
+      )}
       <meta charSet="utf-8" />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="keywords" content="エンジニア,ポートフォリオサイト" />
@@ -48,7 +69,7 @@ const Meta = () => {
       />
       <link
         rel="start"
-        href={process.env.NEXT_PUBLIC_BASE_URL}
+        href={`${process.env.NEXT_PUBLIC_BASE_URL}/`}
         title="Shiho's Portfolio"
       />
     </Head>
