@@ -22,6 +22,14 @@ const Header = () => {
             <ul className="flex space-x-6">
               <li>
                 <Link
+                  href="/"
+                  className="font-bold text-lg transition-all duration-300 hover:opacity-60 dark:text-white"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/profile"
                   className="font-bold text-lg transition-all duration-300 hover:opacity-60 dark:text-white"
                 >

@@ -8,16 +8,20 @@ const Meta = () => {
     <Head>
       <meta charSet="utf-8" />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <meta name="keywords" content="" />
+      <meta name="keywords" content="エンジニア,ポートフォリオサイト" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
         property="og:type"
         content={router.pathname === "/" ? "website" : "article"}
       />
-      <meta property="og:image" content="" />
+      <meta
+        property="og:image"
+        content={`${process.env.NEXT_PUBLIC_BASE_URL}/share.jpg`}
+      />
       <meta property="og:site_name" content="Shiho's Portfolio" />
       <meta property="og:locale" content="ja_JP" />
+      <meta name="twitter:card" content="summary_large_image" />
       <link
         rel="shortcut icon"
         href={`${process.env.NEXT_PUBLIC_BASE_URL}/favicon.ico`}
