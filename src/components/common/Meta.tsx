@@ -1,43 +1,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { GA_TRACKING_ID, pageview } from "utils/gtag";
 
 const Meta = () => {
   const router = useRouter();
-  useEffect(() => {
-    if (!GA_TRACKING_ID) return;
-    const handleRouteChange = (url: string) => {
-      pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
 
   return (
     <Head>
-      {GA_TRACKING_ID && (
-        <>
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
-        </>
-      )}
       <meta charSet="utf-8" />
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="keywords" content="エンジニア,ポートフォリオサイト" />
