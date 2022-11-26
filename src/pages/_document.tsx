@@ -4,7 +4,7 @@ import { GTM_ID } from "utils/gtag";
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="ja">
       <Head>
         <MeasurementTag />
       </Head>

@@ -13,7 +13,7 @@ type Props = {
   works: Work[];
 };
 
-const index = ({ works }: Props) => {
+const Index = ({ works }: Props) => {
   const meta = {
     title: "Works | Shiho's Portfolio",
     description: "過去の製作物を紹介しています。",
@@ -68,7 +68,7 @@ const index = ({ works }: Props) => {
   );
 };
 
-export default index;
+export default Index;
 
 export const getStaticProps: GetStaticProps = async () => {
   const works = await fetchWorks();

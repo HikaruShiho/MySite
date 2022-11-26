@@ -26,6 +26,7 @@
     "react-burger-menu": "^3.0.8",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "react-paginate": "^8.1.4",
     "react-schemaorg": "^2.0.0",
     "react-simple-typewriter": "^5.0.1",
     "schema-dts": "^1.1.0",

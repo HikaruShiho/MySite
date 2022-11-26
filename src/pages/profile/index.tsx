@@ -13,7 +13,7 @@ type Props = {
   skills: string[];
 };
 
-const index = ({ skills }: Props) => {
+const Index = ({ skills }: Props) => {
   const meta = {
     title: "Profile | Shiho's Portfolio",
     description:
@@ -165,7 +165,7 @@ const index = ({ skills }: Props) => {
   );
 };
 
-export default index;
+export default Index;
 
 export const getStaticProps: GetStaticProps = async () => {
   const skills = await fetchSkills();
