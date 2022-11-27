@@ -49,10 +49,10 @@ export default function Home() {
           </div>
           <section className="dark:bg-baseColor01 border-t-2 border-gray-100 dark:border-baseColor01">
             <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20 text-center">
-              <span className="text-3xl md:text-6xl font-bold text-accentColor02 dark:text-white">
+              <span className="text-4xl md:text-6xl font-bold text-accentColor02 dark:text-white">
                 About
               </span>
-              <span className="block text-xs md:text-base font-bold pt-2 md:pt-3 dark:text-white">
+              <span className="block text-sm md:text-base font-bold pt-2 md:pt-3 dark:text-white">
                 このサイトについて
               </span>
             </h3>
@@ -78,12 +78,12 @@ export default function Home() {
           </section>
           <section className="bg-black bg-top-works-background bg-right bg-no-repeat bg-contain">
             <h3 className="w-full max-w-4xl mx-auto px-5 md:px-10 pt-12 md:pt-24">
-              <span className="text-3xl md:text-6xl font-bold text-white">
+              <span className="text-4xl md:text-6xl font-bold text-white">
                 Works
               </span>
             </h3>
             <div className="w-full max-w-4xl mx-auto px-5 md:px-10 pt-3 md:pt-8 pb-16 md:pb-32">
-              <p className="text-xs md:text-base text-white">
+              <p className="text-sm md:text-base text-white">
                 過去の製作物を掲載しています。
               </p>
               <div className="pt-6 md:pt-10">
@@ -98,10 +98,10 @@ export default function Home() {
           </section>
           <section className="dark:bg-baseColor01 border-t-2 border-gray-100 dark:border-baseColor01">
             <h3 className="w-full max-w-7xl mx-auto px-5 md:px-10 pt-10 md:pt-20 text-center">
-              <span className="text-3xl md:text-6xl font-bold text-twitter dark:text-white">
+              <span className="text-4xl md:text-6xl font-bold text-twitter dark:text-white">
                 Contact
               </span>
-              <span className="block text-xs md:text-base font-bold pt-2 md:pt-3 dark:text-white">
+              <span className="block text-sm md:text-base font-bold pt-2 md:pt-3 dark:text-white">
                 お問い合わせ
               </span>
             </h3>

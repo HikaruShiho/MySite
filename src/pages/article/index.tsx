@@ -28,7 +28,7 @@ const meta = {
 
 const Index = ({ articles }: Props) => {
   const [offset, setOffset] = useState(0);
-  const perPage: number = 9;
+  const perPage: number = 1;
 
   /**
    * ページネーションのハンドラー
@@ -89,31 +89,37 @@ const Index = ({ articles }: Props) => {
                 }
                 nextLabel={<MdOutlineKeyboardArrowRight className="w-5 h-5" />}
                 breakLabel={"..."}
-                pageCount={Math.ceil(articles.length / perPage)} // 全部のページ数。端数の場合も考えて切り上げに。
-                marginPagesDisplayed={0} // 一番最初と最後を基準にして、そこからいくつページ数を表示するか
-                pageRangeDisplayed={5} // アクティブなページを基準にして、そこからいくつページ数を表示するか
-                onPageChange={handlePageChange} // クリック時のfunction
+                breakClassName="border-2 rounded-lg flex item-center mx-1 md:mx-2 transition-all duration-300 hover:bg-accentColor02 hover:text-white hover:border-accentColor02 dark:text-white"
+                breakLinkClassName="w-6 md:w-8 py-1.5 flex items-center justify-center"
+                pageCount={Math.ceil(articles.length / perPage)}
+                marginPagesDisplayed={0}
+                pageRangeDisplayed={3}
+                onPageChange={handlePageChange}
                 containerClassName={
-                  "pagination max-w-2xl mx-auto flex justify-center pt-10"
-                } // ページネーションであるulに着くクラス名
+                  "h-12 md:h-20 pagination max-w-2xl mx-auto flex justify-center pt-5 md:t-10"
+                }
                 pageClassName={
-                  "mx-2 border-2 rounded-lg transition-all duration-300 hover:bg-accentColor02 hover:text-white hover:border-accentColor02"
-                } //liのクラス名
-                pageLinkClassName={"inline-block px-3 leading-9 text-center"} //aタグのクラス名
+                  "mx-1 md:mx-2 border-2 rounded-lg transition-all duration-300 dark:text-white hover:bg-accentColor02 hover:text-white hover:border-accentColor02"
+                }
+                pageLinkClassName={
+                  "block w-6 md:w-8 py-0.5 md:py-1.5 text-sm md:text-base text-center"
+                }
                 activeClassName={
                   "active bg-accentColor02 text-white border-accentColor02"
-                } // アクティブなページのliに着くクラス名
+                }
                 previousClassName={
-                  "pagination__previous border-2 rounded-lg flex item-center mr-2 transition-all duration-300 hover:bg-accentColor02 hover:text-white hover:border-accentColor02"
-                } // 「<」のliに着けるクラス名
-                previousLinkClassName={"flex items-center px-1.5"} // 「<」のaタグに着けるクラス名
+                  "pagination__previous border-2 rounded-lg flex item-center mr-1 md:mr-2 transition-all duration-300 hover:bg-accentColor02 hover:text-white hover:border-accentColor02 dark:text-white"
+                }
+                previousLinkClassName={
+                  "w-6 md:w-8 py-1.5 flex items-center justify-center"
+                }
                 nextClassName={
-                  "pagination__next border-2 rounded-lg flex item-center ml-2 transition-all duration-300 hover:bg-accentColor02 hover:text-white hover:border-accentColor02"
-                } // 「>」のliに着けるクラス名
+                  "pagination__next border-2 rounded-lg flex item-center ml-1 md:ml-2 transition-all duration-300 hover:bg-accentColor02 hover:text-white hover:border-accentColor02 dark:text-white"
+                }
                 nextLinkClassName={
-                  "inline-block h-full flex items-center px-1.5"
-                } // 「>」のaタグに着けるクラス名
-                disabledClassName={"pagination__disabled hidden"} // 使用不可の「<,>」に着くクラス名
+                  "w-6 md:w-8 py-1.5 flex items-center justify-center"
+                }
+                disabledClassName={"pagination__disabled hidden"}
               />
             )}
           </div>

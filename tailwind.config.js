@@ -16,9 +16,6 @@ module.exports = {
         accentColor01: "#80a8ff",
         accentColor02: "#296dff",
       },
-      fontSize: {
-        "2xs": "0.625rem",
-      },
       fontFamily: {
         sans: [
           '"Noto Sans JP"',
