@@ -96,7 +96,7 @@ const Index = ({ articles }: Props) => {
                 pageRangeDisplayed={3}
                 onPageChange={handlePageChange}
                 containerClassName={
-                  "h-12 md:h-20 pagination max-w-2xl mx-auto flex justify-center pt-5 md:t-10"
+                  "h-12 md:h-16 pagination max-w-2xl mx-auto flex justify-center pt-5 md:t-10"
                 }
                 pageClassName={
                   "mx-1 md:mx-2 border-2 rounded-lg transition-all duration-300 dark:text-white hover:bg-accentColor02 hover:text-white hover:border-accentColor02"
