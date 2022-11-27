@@ -28,7 +28,7 @@ const meta = {
 
 const Index = ({ articles }: Props) => {
   const [offset, setOffset] = useState(0);
-  const perPage: number = 1;
+  const perPage: number = 9;
 
   /**
    * ページネーションのハンドラー
