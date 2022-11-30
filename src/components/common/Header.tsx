@@ -8,7 +8,7 @@ const Header = () => {
     <header className="bg-white dark:bg-baseColor01">
       <div className="w-full flex item-center justify-between px-5 md:px-10 py-2 md:py-3">
         <h1 className="w-12 md:w-20">
-          <Link href="/">
+          <Link href="/" scroll={false}>
             <Image
               src={"/images/common/logo.png"}
               width="391"
@@ -23,6 +23,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/"
+                  scroll={false}
                   className="font-bold text-lg transition-all duration-300 hover:opacity-60 dark:text-white"
                 >
                   Home
@@ -31,6 +32,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/profile"
+                  scroll={false}
                   className="font-bold text-lg transition-all duration-300 hover:opacity-60 dark:text-white"
                 >
                   Profile
@@ -39,6 +41,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/works"
+                  scroll={false}
                   className="font-bold text-lg transition-all duration-300 hover:opacity-60 dark:text-white"
                 >
                   Works
@@ -47,6 +50,7 @@ const Header = () => {
               <li>
                 <Link
                   href="/article"
+                  scroll={false}
                   className="font-bold text-lg transition-all duration-300 hover:opacity-60 dark:text-white"
                 >
                   Qiita

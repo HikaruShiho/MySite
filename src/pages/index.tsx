@@ -68,8 +68,9 @@ export default function Home() {
               </p>
               <div className="flex justify-center pt-6 md:pt-10">
                 <Link
-                  className="block w-48 md:w-80 bg-accentColor02 rounded-full text-center text-sm md:text-base py-2 md:py-3 font-bold border-2 border-accentColor02 text-white transition-all duration-300 hover:text-accentColor02 hover:bg-white"
                   href="/profile"
+                  scroll={false}
+                  className="block w-48 md:w-80 bg-accentColor02 rounded-full text-center text-sm md:text-base py-2 md:py-3 font-bold border-2 border-accentColor02 text-white transition-all duration-300 hover:text-accentColor02 hover:bg-white"
                 >
                   プロフィールを見る
                 </Link>
@@ -88,8 +89,9 @@ export default function Home() {
               </p>
               <div className="pt-6 md:pt-10">
                 <Link
-                  className="block w-40 md:w-64 bg-accentColor02 rounded-full text-center text-sm md:text-base py-2 md:py-3 font-bold border-2 border-accentColor02 text-white transition-all duration-300 hover:text-accentColor02 hover:bg-white"
                   href="/works"
+                  scroll={false}
+                  className="block w-40 md:w-64 bg-accentColor02 rounded-full text-center text-sm md:text-base py-2 md:py-3 font-bold border-2 border-accentColor02 text-white transition-all duration-300 hover:text-accentColor02 hover:bg-white"
                 >
                   製作物一覧
                 </Link>

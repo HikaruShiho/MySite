@@ -51,8 +51,8 @@ const WorkId = ({ work }: Props) => {
           transition={{ ease: "easeOut", duration: 0.6 }}
         >
           <Keyvisual title={"Works"} sub_title={"制作物"} />
-          <div className="w-full max-w-7xl mx-auto">
-            <div className="flex flex-wrap py-10 md:py-20 px-5 md:px-6 bg-white  dark:bg-baseColor01">
+          <div className="w-full bg-white dark:bg-baseColor01">
+            <div className="flex flex-wrap py-10 md:py-20 px-5 md:px-6 max-w-7xl mx-auto">
               <ul className="flex flex-wrap">
                 <li className="px-0 md:px-4 w-full md:w-2/4">
                   <Image
