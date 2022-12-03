@@ -1,9 +1,10 @@
 # My Portfolio Site
 [https://shihosoi.com/](https://shihosoi.com/)
 
-# Architecture
+![スクリーン ショット 2022-12-03 に 14 46 50 午後](https://user-images.githubusercontent.com/87953076/205426412-d277c206-c170-44cd-a567-0ac79ec2f288.png)
 
-First, run the development server:
+# Architecture
+![68747470733a2f2f71696974612d696d6167652d73746f72652e73332e61702d6e6f727468656173742d312e616d617a6f6e6177732e636f6d2f302f323633383537322f38306230323333622d656433342d353134652d313239612d3438666238666566346439662e706e67](https://user-images.githubusercontent.com/87953076/205426319-5d1b06ac-0591-4610-8733-83a728436f69.png)
 
 # Technology Stacks
 - Next.js
