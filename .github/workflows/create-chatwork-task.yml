@@ -1,0 +1,24 @@
+name: Create Chatwork Task on Pull Request
+
+on:
+  pull_request:
+    types: [opened, review_requested]
+  workflow_dispatch:
+
+jobs:
+  create-chatwork-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Chatwork Task
+        env:
+          CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
+          CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
+        run: |
+          # メッセージを作成
+          message="プルリクエストのレビューをお願いします。\n\n"
+          message+="プルリクエストURL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}"
+
+          # Chatworkにタスクを送信
+          curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_TOKEN" \
+            -d "body=$message" \
+            "https://api.chatwork.com/v2/rooms/$CHATWORK_ROOM_ID/tasks"
