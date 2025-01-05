@@ -16,15 +16,29 @@ jobs:
         run: |
           # メッセージを作成
           message=$(cat << EOF
-          プルリクエストのレビューをお願いします。
+          レビューをお願いいたします！
 
           プルリクエストURL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
           EOF
           )
 
+          # 3営業日後の期限を計算
+          function get_due_date() {
+            current_date=$(date +%Y-%m-%d)
+            count=0
+            while [ $count -lt 3 ]; do
+              current_date=$(date -d "$current_date +1 day" +%Y-%m-%d)
+              day_of_week=$(date -d "$current_date" +%u) # 1=月, ..., 7=日
+              if [ "$day_of_week" -lt 6 ]; then # 月～金のみカウント
+                ((count++))
+              fi
+            done
+            echo $(date -d "$current_date" +%s)
+          }
+
           # Chatworkにタスクを送信
           curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_TOKEN" \
             -d "body=$message" \
             -d "to_ids=6510527" \
-            -d "limit_time=$(date -d '+3 days' +%s)" \
+            -d "limit=$(get_due_date)" \
             "https://api.chatwork.com/v2/rooms/$CHATWORK_ROOM_ID/tasks"
