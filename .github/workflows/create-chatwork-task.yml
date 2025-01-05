@@ -1,4 +1,4 @@
-name: Create Chatwork Task on Pull Request
+name: Create Chatwork Task
 
 on:
   pull_request:
@@ -15,8 +15,12 @@ jobs:
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
         run: |
           # メッセージを作成
-          message="プルリクエストのレビューをお願いします。\n\n"
-          message+="プルリクエストURL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}"
+          message=$(cat << EOF
+          プルリクエストのレビューをお願いします。
+
+          プルリクエストURL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+          EOF
+          )
 
           # Chatworkにタスクを送信
           curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_TOKEN" \
