@@ -39,6 +39,6 @@ jobs:
           # Chatworkにタスクを送信
           curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_TOKEN" \
             -d "body=$message" \
-            -d "to_ids=6510527" \
+            -d "to_ids=35zodc1q99s04" \
             -d "limit=$(get_due_date)" \
             "https://api.chatwork.com/v2/rooms/$CHATWORK_ROOM_ID/tasks"
