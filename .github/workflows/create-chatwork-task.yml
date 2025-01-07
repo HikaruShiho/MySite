@@ -21,16 +21,27 @@ jobs:
           CHATWORK_USER_MAPPING: ${{ secrets.CHATWORK_USER_MAPPING }}
         run: |
           # PRのレビュワー一覧を取得
-          github_reviewers=$(echo "${{ toJSON(github.event.pull_request.requested_reviewers) }}" | jq -r '.[].login' | tr '\n' ' ')
+          # 新しいレビュワー（今回追加された）を取得
+          new_reviewer="${{ github.event.requested_reviewer.login }}"
+
+          # 既存のレビュワー一覧を取得
+          existing_reviewers=$(echo '${{ toJSON(github.event.pull_request.requested_reviewers) }}' | jq -r '.[].login' | tr '\n' ' ')
+
+          # 両方を結合（重複を避けるため）
+          github_reviewers="$new_reviewer $existing_reviewers"
+          github_reviewers=$(echo "$github_reviewers" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
           # レビュワーのChatwork IDリストを作成
           reviewer_chatwork_ids=""
           for github_username in $github_reviewers; do
-            chatwork_account_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"$github_username\"]")
-            if [ "$chatwork_account_id" != "null" ]; then
-              reviewer_chatwork_ids="${reviewer_chatwork_ids}${chatwork_account_id},"
+            if [ -n "$github_username" ]; then
+              chatwork_account_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"$github_username\"]")
+              if [ "$chatwork_account_id" != "null" ]; then
+                reviewer_chatwork_ids="${reviewer_chatwork_ids}${chatwork_account_id},"
+              fi
             fi
           done
+
           # 末尾のカンマを削除
           reviewer_chatwork_ids=${reviewer_chatwork_ids%,}
 
