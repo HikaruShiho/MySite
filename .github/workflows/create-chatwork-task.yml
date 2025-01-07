@@ -9,41 +9,23 @@ jobs:
   create-chatwork-task:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug Event Info
-        run: |
-          echo "Event Action: ${{ github.event.action }}"
-          echo "Event Type: ${{ github.event_name }}"
-          echo "Created At: ${{ github.event.pull_request.created_at }}"
-          echo "Updated At: ${{ github.event.pull_request.updated_at }}"
-          echo "Labels: ${{ toJSON(github.event.pull_request.labels) }}"
-          echo "Requested Reviewer: ${{ github.event.requested_reviewer.login }}"
       - name: Create Chatwork Task
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
           CHATWORK_USER_MAPPING: ${{ secrets.CHATWORK_USER_MAPPING }}
         run: |
-          # PRのレビュワー一覧を取得
-          # 新しいレビュワー（今回追加された）を取得
+          # 新しいReviewers（今回追加された）を取得
           new_reviewer="${{ github.event.requested_reviewer.login }}"
 
-          echo "New Reviewer: $new_reviewer"
-
-          # 既存のレビュワー一覧を取得
+          # 既存のReviewers一覧を取得
           existing_reviewers=$(echo '${{ toJSON(github.event.pull_request.requested_reviewers) }}' | jq -r '.[].login' | tr '\n' ' ')
-
-          echo "Existing Reviewers: $existing_reviewers"
-
-          # github-username2でマッピングされているChatwork IDを取得
-          github_username2_chatwork_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"github-username2\"]")
-
-          echo "Github Username2 Chatwork ID: $github_username2_chatwork_id"
 
           # 両方を結合（重複を避けるため）
           github_reviewers="$new_reviewer $existing_reviewers"
           github_reviewers=$(echo "$github_reviewers" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
-          # レビュワーのChatwork IDリストを作成
+          # ReviewersのChatwork IDリストを作成
           reviewer_chatwork_ids=""
           for github_username in $github_reviewers; do
             if [ -n "$github_username" ]; then
@@ -62,7 +44,7 @@ jobs:
           ${{ github.event.pull_request.title }}
 
           レビューをお願いいたします(bow)
-          URL：https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+          https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
           EOF
           )
 
