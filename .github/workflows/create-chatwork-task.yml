@@ -2,7 +2,7 @@ name: Create Chatwork Task
 
 on:
   pull_request:
-    types: [opened]
+    types: [opened, review_requested]
   workflow_dispatch:
 
 jobs:
@@ -13,7 +13,22 @@ jobs:
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
+          CHATWORK_USER_MAPPING: ${{ secrets.CHATWORK_USER_MAPPING }}
         run: |
+          # PRのレビュワー一覧を取得
+          github_reviewers=$(echo "${{ toJSON(github.event.pull_request.requested_reviewers) }}" | jq -r '.[].login' | tr '\n' ' ')
+
+          # レビュワーのChatwork IDリストを作成
+          reviewer_chatwork_ids=""
+          for github_username in $github_reviewers; do
+            chatwork_account_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"$github_username\"]")
+            if [ "$chatwork_account_id" != "null" ]; then
+              reviewer_chatwork_ids="${reviewer_chatwork_ids}${chatwork_account_id},"
+            fi
+          done
+          # 末尾のカンマを削除
+          reviewer_chatwork_ids=${reviewer_chatwork_ids%,}
+
           # メッセージを作成
           message=$(cat << EOF
           レビューをお願いいたします！
@@ -28,7 +43,7 @@ jobs:
             count=0
             while [ $count -lt 3 ]; do
               current_date=$(date -d "$current_date +1 day" +%Y-%m-%d)
-              day_of_week=$(date -d "$current_date" +%u) # 1=月, ..., 7=日
+              day_of_week=$(date -d "$current_date" +%u)
               if [ "$day_of_week" -lt 6 ]; then # 月～金のみカウント
                 ((count++))
               fi
@@ -39,6 +54,6 @@ jobs:
           # Chatworkにタスクを送信
           curl -X POST -H "X-ChatWorkToken: $CHATWORK_API_TOKEN" \
             -d "body=$message" \
-            -d "to_ids=35zodc1q99s04" \
+            -d "to_ids=$reviewer_chatwork_ids" \
             -d "limit=$(get_due_date)" \
             "https://api.chatwork.com/v2/rooms/$CHATWORK_ROOM_ID/tasks"
