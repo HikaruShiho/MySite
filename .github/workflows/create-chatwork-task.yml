@@ -16,12 +16,14 @@ jobs:
           echo "Created At: ${{ github.event.pull_request.created_at }}"
           echo "Updated At: ${{ github.event.pull_request.updated_at }}"
           echo "Labels: ${{ toJSON(github.event.pull_request.labels) }}"
-          echo "Requested Reviewer: ${{ github.event.requested_reviewer.login }}"
+          echo "Review State: ${{ github.event.pull_request.review_state }}"
+          echo "Reviews: ${{ toJSON(github.event.pull_request.reviews) }}"
+          echo "Latest Review: ${{ toJSON(github.event.pull_request.latest_review) }}"
 
       - name: Create Chatwork Task
         if: |
           github.event.pull_request.created_at == github.event.pull_request.updated_at ||
-          contains(github.event.pull_request.labels.*.name, 'changes requested')
+          github.event.pull_request.review_state == 'changes_requested'
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
