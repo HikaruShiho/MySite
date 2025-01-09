@@ -2,7 +2,7 @@ name: Create Chatwork Task
 
 on:
   pull_request:
-    types: [opened, review_requested]
+    types: [review_requested]
   workflow_dispatch:
 
 jobs:
@@ -15,36 +15,60 @@ jobs:
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
           CHATWORK_USER_MAPPING: ${{ secrets.CHATWORK_USER_MAPPING }}
         run: |
-          # PRのレビュワー一覧を取得
-          github_reviewers=$(echo "${{ toJSON(github.event.pull_request.requested_reviewers) }}" | jq -r '.[].login' | tr '\n' ' ')
+          # 新しいReviewers（今回追加された）を取得
+          new_reviewer="${{ github.event.requested_reviewer.login }}"
 
-          # レビュワーのChatwork IDリストを作成
+          # 既存のReviewers一覧を取得
+          existing_reviewers=$(echo '${{ toJSON(github.event.pull_request.requested_reviewers) }}' | jq -r '.[].login' | tr '\n' ' ')
+
+          # 両方を結合（重複を避けるため）
+          github_reviewers="$new_reviewer $existing_reviewers"
+          github_reviewers=$(echo "$github_reviewers" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+
+          # ReviewersのChatwork IDリストを作成
           reviewer_chatwork_ids=""
           for github_username in $github_reviewers; do
-            chatwork_account_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"$github_username\"]")
-            if [ "$chatwork_account_id" != "null" ]; then
-              reviewer_chatwork_ids="${reviewer_chatwork_ids}${chatwork_account_id},"
+            if [ -n "$github_username" ]; then
+              chatwork_account_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"$github_username\"]")
+              if [ "$chatwork_account_id" != "null" ]; then
+                reviewer_chatwork_ids="${reviewer_chatwork_ids}${chatwork_account_id},"
+              fi
             fi
           done
+
           # 末尾のカンマを削除
           reviewer_chatwork_ids=${reviewer_chatwork_ids%,}
 
           # メッセージを作成
           message=$(cat << EOF
-          レビューをお願いいたします！
+          ${{ github.event.pull_request.title }}
 
-          プルリクエストURL: https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
+          レビューをお願いいたします(bow)
+          https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
           EOF
           )
 
-          # 3営業日後の期限を計算
+          # 祝日データを一度だけ取得
+          HOLIDAY_DATA=$(curl -s "https://holidays-jp.github.io/api/v1/date.json")
+
+          function is_holiday() {
+            local check_date=$1
+            if echo "$HOLIDAY_DATA" | jq -e ".[\"$check_date\"]" > /dev/null; then
+              return 0
+            else
+              return 1
+            fi
+          }
+
           function get_due_date() {
             current_date=$(date +%Y-%m-%d)
             count=0
             while [ $count -lt 3 ]; do
               current_date=$(date -d "$current_date +1 day" +%Y-%m-%d)
               day_of_week=$(date -d "$current_date" +%u)
-              if [ "$day_of_week" -lt 6 ]; then # 月～金のみカウント
+
+              # 土日または祝日の場合はスキップ
+              if [ "$day_of_week" -lt 6 ] && ! is_holiday "$current_date"; then
                 ((count++))
               fi
             done
