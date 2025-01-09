@@ -48,14 +48,27 @@ jobs:
           EOF
           )
 
-          # 3営業日後の期限を計算
+          # 祝日データを一度だけ取得
+          HOLIDAY_DATA=$(curl -s "https://holidays-jp.github.io/api/v1/date.json")
+
+          function is_holiday() {
+            local check_date=$1
+            if echo "$HOLIDAY_DATA" | jq -e ".[\"$check_date\"]" > /dev/null; then
+              return 0
+            else
+              return 1
+            fi
+          }
+
           function get_due_date() {
             current_date=$(date +%Y-%m-%d)
             count=0
             while [ $count -lt 3 ]; do
               current_date=$(date -d "$current_date +1 day" +%Y-%m-%d)
               day_of_week=$(date -d "$current_date" +%u)
-              if [ "$day_of_week" -lt 6 ]; then # 月～金のみカウント
+
+              # 土日または祝日の場合はスキップ
+              if [ "$day_of_week" -lt 6 ] && ! is_holiday "$current_date"; then
                 ((count++))
               fi
             done
