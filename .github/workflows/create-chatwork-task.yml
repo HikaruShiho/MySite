@@ -47,7 +47,7 @@ jobs:
           EOF
           )
 
-          # 祝日データを一度だけ取得
+          # 祝日取得
           HOLIDAY_DATA=$(curl -s "https://holidays-jp.github.io/api/v1/date.json")
 
           function is_holiday() {
