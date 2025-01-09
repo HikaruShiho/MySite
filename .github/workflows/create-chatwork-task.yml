@@ -3,7 +3,6 @@ name: Create Chatwork Task
 on:
   pull_request:
     types: [review_requested]
-  workflow_dispatch:
 
 jobs:
   create-chatwork-task:
