@@ -25,16 +25,6 @@ jobs:
           github_reviewers=$(echo "$github_reviewers" | tr ' ' '\n' | sort -u | tr '\n' ' ')
 
           # ReviewersのChatwork IDリストを作成
-          # reviewer_chatwork_ids=""
-          # for github_username in $github_reviewers; do
-          #   if [ -n "$github_username" ]; then
-          #     chatwork_account_id=$(echo $CHATWORK_USER_MAPPING | jq -r ".[\"$github_username\"]")
-          #     if [ "$chatwork_account_id" != "null" ]; then
-          #       reviewer_chatwork_ids="${reviewer_chatwork_ids}${chatwork_account_id},"
-          #     fi
-          #   fi
-          # done
-
           chatwork_ids=()
 
           for github_username in $github_reviewers; do
@@ -49,11 +39,6 @@ jobs:
           # 配列をカンマで join（末尾カンマなし）
           IFS=',' read -r -a joined_ids <<< "${chatwork_ids[*]}"
           reviewer_chatwork_ids="${joined_ids[*]}"
-
-          echo "to_ids = $reviewer_chatwork_ids"
-
-          # 末尾のカンマを削除
-          # reviewer_chatwork_ids=${reviewer_chatwork_ids%,}
 
           # メッセージを作成
           message=$(cat << EOF
