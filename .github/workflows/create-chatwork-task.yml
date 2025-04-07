@@ -35,7 +35,7 @@ jobs:
               fi
             fi
           done
-          
+
           # 配列をカンマで join（末尾カンマなし）
           IFS=',' read -r -a joined_ids <<< "${chatwork_ids[*]}"
           reviewer_chatwork_ids="${joined_ids[*]}"
