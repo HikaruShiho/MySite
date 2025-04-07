@@ -12,7 +12,7 @@ jobs:
         env:
           CHATWORK_API_TOKEN: ${{ secrets.CHATWORK_API_TOKEN }}
           CHATWORK_ROOM_ID: ${{ secrets.CHATWORK_ROOM_ID }}
-          CHATWORK_USER_MAPPING: ${{ secrets.CHATWORK_USER_MAPPING }}
+          CHATWORK_USER_MAPPING: ${{ vars.CHATWORK_USER_MAPPING }}
         run: |
           # 新しいReviewers（今回追加された）を取得
           new_reviewer="${{ github.event.requested_reviewer.login }}"
@@ -42,7 +42,8 @@ jobs:
           message=$(cat << EOF
           ${{ github.event.pull_request.title }}
 
-          レビューをお願いいたします(bow)
+          レビューお願いいたします(bow)
+
           https://github.com/${{ github.repository }}/pull/${{ github.event.number }}
           EOF
           )
