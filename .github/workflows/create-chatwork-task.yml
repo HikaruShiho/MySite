@@ -35,6 +35,8 @@ jobs:
             fi
           done
 
+          echo "to_ids = $reviewer_chatwork_ids"
+
           # 末尾のカンマを削除
           reviewer_chatwork_ids=${reviewer_chatwork_ids%,}
 
